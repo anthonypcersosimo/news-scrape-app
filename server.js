@@ -1,18 +1,18 @@
 const express = require("express");
 const exphbrs = require("express-handlebars");
 const bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 
 var PORT = process.env.PORT || 3000;
 
 const app = express();
 
 const router = express.Router();
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+// require("./routes/routes.js")(app);
 
 // Static directory
-app.use(express.static("public"));
-app.use(express.json());
+app.use(express.static(__dirname + "/public"));
+// app.use(express.json());
 app.use(router);
 
 // Connect handlebars to Express
@@ -28,9 +28,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // const db = require("./models");
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-mongoose.connect(MONGODB_URI);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/headlinesdb";
+mongoose.connect(MONGODB_URI, (err) => {
+    if (err) throw err;
+    else {
+        console.log("Mongoose connection established")
+    };
+});
 
 app.listen(PORT, () => {
     console.log("App listening on PORT " + PORT);
