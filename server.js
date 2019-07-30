@@ -8,12 +8,12 @@ var PORT = process.env.PORT || 3000;
 const app = express();
 
 const router = express.Router();
-// require("./routes/routes.js")(app);
+require("./routes/routes.js")(router);
+app.use(router);
 
 // Static directory
 app.use(express.static(__dirname + "/public"));
 // app.use(express.json());
-app.use(router);
 
 // Connect handlebars to Express
 app.engine("handlebars", exphbrs({
