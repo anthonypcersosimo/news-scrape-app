@@ -7,6 +7,10 @@ var headlinesSchema = new Schema ({
         unique: true,
         required: true
     },
+    author: {
+        type: String,
+        required: false
+    },
     summary: {
         type: String,
         required: true
