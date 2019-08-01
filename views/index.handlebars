@@ -7,16 +7,23 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#"> Home </a>
+        <a class="nav-link" href="/"> Home </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"> Saved </a>
+        <a class="nav-link" href="/saved"> Saved </a>
       </li>
       <li class="nav-item">
-      <button class="btn btn-danger btn-lrg">Scrape Stories</button>
+      <button class="btn btn-danger btn-lrg" id="scrape-new">Scrape Stories</button>
       </li>
     </ul>
   </div>
 </nav>
 
-<h1>Home</h1>
+<div class="jumbotron jumbotron-fluid text-center" id="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Home News Feed</h1>
+    <p class="lead">Click the red <button class="btn btn-danger btn-sm" id="fake-button">Scrape Stories</button> button above to begin </p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

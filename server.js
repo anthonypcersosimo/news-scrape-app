@@ -1,7 +1,8 @@
 const express = require("express");
 const exphbrs = require("express-handlebars");
 const bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const path = require("path");
 
 var PORT = process.env.PORT || 3000;
 
@@ -12,8 +13,7 @@ require("./routes/routes.js")(router);
 app.use(router);
 
 // Static directory
-app.use(express.static(__dirname + "/public"));
-// app.use(express.json());
+app.use(express.static(path.join(__dirname, '/public')));// app.use(express.json());
 
 // Connect handlebars to Express
 app.engine("handlebars", exphbrs({
